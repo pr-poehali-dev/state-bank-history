@@ -3,10 +3,14 @@ import { slides } from "@/data/presentationData";
 import CoverSlide from "@/components/slides/CoverSlide";
 import FoundationSlide from "@/components/slides/FoundationSlide";
 import FunctionsSlide from "@/components/slides/FunctionsSlide";
+import ArchitectureSlide from "@/components/slides/ArchitectureSlide";
+import ReformSlide from "@/components/slides/ReformSlide";
 import TimelineSlide from "@/components/slides/TimelineSlide";
 import ChartsSlide from "@/components/slides/ChartsSlide";
+import InternationalSlide from "@/components/slides/InternationalSlide";
 import PeopleSlide from "@/components/slides/PeopleSlide";
 import DeclineSlide from "@/components/slides/DeclineSlide";
+import LegacySlide from "@/components/slides/LegacySlide";
 import SourcesSlide from "@/components/slides/SourcesSlide";
 import Icon from "@/components/ui/icon";
 
@@ -15,10 +19,14 @@ const slideComponents: Record<string, React.ComponentType<any>> = {
   cover: CoverSlide,
   text: FoundationSlide,
   functions: FunctionsSlide,
+  architecture: ArchitectureSlide,
+  reform: ReformSlide,
   timeline: TimelineSlide,
   charts: ChartsSlide,
+  international: InternationalSlide,
   people: PeopleSlide,
   decline: DeclineSlide,
+  legacy: LegacySlide,
   sources: SourcesSlide,
 };
 
@@ -26,10 +34,14 @@ const navLabels: Record<string, string> = {
   history: "История",
   foundation: "Основание",
   functions: "Функции",
+  architecture: "Архитектура",
+  reform: "Реформа 1897",
   development: "Развитие",
   activity: "Деятельность",
+  international: "Мир. связи",
   people: "Люди",
   decline: "Закат",
+  legacy: "Наследие",
   sources: "Источники",
 };
 
@@ -38,15 +50,12 @@ const Index = () => {
   const [animKey, setAnimKey] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const goTo = useCallback(
-    (index: number) => {
-      if (index < 0 || index >= slides.length) return;
-      setCurrent(index);
-      setAnimKey((k) => k + 1);
-      setMenuOpen(false);
-    },
-    []
-  );
+  const goTo = useCallback((index: number) => {
+    if (index < 0 || index >= slides.length) return;
+    setCurrent(index);
+    setAnimKey((k) => k + 1);
+    setMenuOpen(false);
+  }, []);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -82,10 +91,10 @@ const Index = () => {
             Государственный банк
           </span>
           <span
-            className="text-xs tracking-wider hidden sm:block"
+            className="text-xs tracking-wider hidden md:block"
             style={{ color: "rgba(201,168,76,0.6)", fontFamily: "'Crimson Text', serif" }}
           >
-            · Российской Империи ·
+            · Российской Империи · 1860–1917
           </span>
         </div>
 
@@ -109,7 +118,7 @@ const Index = () => {
       <div className="flex flex-1 overflow-hidden relative">
         {/* Боковая навигация — десктоп */}
         <nav
-          className="hidden sm:flex flex-col w-44 flex-shrink-0 py-4 overflow-y-auto"
+          className="hidden sm:flex flex-col w-40 flex-shrink-0 py-4 overflow-y-auto"
           style={{
             backgroundColor: "var(--sepia-paper)",
             borderRight: "1px solid var(--border-ornate)",
@@ -129,17 +138,17 @@ const Index = () => {
             <button
               key={s.id}
               onClick={() => goTo(i)}
-              className="text-left px-4 py-2.5 text-sm transition-all relative"
+              className="text-left px-3 py-2 text-sm transition-all relative"
               style={{
                 fontFamily: "'Crimson Text', serif",
-                fontSize: "15px",
+                fontSize: "14px",
                 color: current === i ? "var(--sepia-dark)" : "var(--sepia-medium)",
                 backgroundColor: current === i ? "rgba(201,168,76,0.2)" : "transparent",
                 borderLeft: current === i ? "3px solid var(--gold)" : "3px solid transparent",
                 fontWeight: current === i ? "600" : "400",
               }}
             >
-              <span className="mr-2 text-xs" style={{ color: "var(--gold-light)" }}>{i + 1}.</span>
+              <span className="mr-1.5 text-xs" style={{ color: "var(--gold-light)" }}>{i + 1}.</span>
               {navLabels[s.id]}
             </button>
           ))}
@@ -148,12 +157,12 @@ const Index = () => {
         {/* Мобильное меню */}
         {menuOpen && (
           <div
-            className="absolute inset-0 z-20 sm:hidden"
+            className="absolute inset-0 z-20 sm:hidden overflow-y-auto"
             style={{ backgroundColor: "var(--sepia-dark)" }}
           >
             <div className="p-4">
               <div
-                className="text-xs uppercase tracking-widest text-center pb-3 mb-2"
+                className="text-xs uppercase tracking-widest text-center pb-3 mb-3"
                 style={{
                   color: "var(--gold)",
                   borderBottom: "1px solid var(--gold-light)",
@@ -224,15 +233,15 @@ const Index = () => {
         </button>
 
         {/* Индикатор прогресса */}
-        <div className="flex gap-1.5">
+        <div className="flex gap-1 flex-wrap justify-center max-w-sm">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => goTo(i)}
               className="transition-all"
               style={{
-                width: current === i ? "20px" : "6px",
-                height: "6px",
+                width: current === i ? "16px" : "5px",
+                height: "5px",
                 borderRadius: "3px",
                 backgroundColor: current === i ? "var(--gold)" : "rgba(201,168,76,0.3)",
               }}
