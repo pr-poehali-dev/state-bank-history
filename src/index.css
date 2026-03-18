@@ -1,92 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Исторические цвета — сепия и золото */
+    --sepia-bg: #f5efe0;
+    --sepia-paper: #ede3c8;
+    --sepia-dark: #2c1f0e;
+    --sepia-medium: #5c3d1e;
+    --sepia-light: #8b6544;
+    --gold: #9a7b2f;
+    --gold-light: #c9a84c;
+    --gold-dark: #6b5420;
+    --border-ornate: #8b6544;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --background: 40 45% 92%;
+    --foreground: 25 55% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --card: 40 35% 88%;
+    --card-foreground: 25 55% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --popover: 40 35% 88%;
+    --popover-foreground: 25 55% 12%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --primary: 35 52% 35%;
+    --primary-foreground: 40 45% 92%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --secondary: 38 30% 80%;
+    --secondary-foreground: 25 55% 12%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 38 25% 82%;
+    --muted-foreground: 25 30% 35%;
+
+    --accent: 43 60% 45%;
+    --accent-foreground: 40 45% 92%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 45% 92%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 35% 65%;
+    --input: 35 35% 65%;
+    --ring: 35 52% 35%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 40 45% 92%;
+    --sidebar-foreground: 25 55% 12%;
+    --sidebar-primary: 35 52% 35%;
+    --sidebar-primary-foreground: 40 45% 92%;
+    --sidebar-accent: 38 30% 80%;
+    --sidebar-accent-foreground: 25 55% 12%;
+    --sidebar-border: 35 35% 65%;
+    --sidebar-ring: 35 52% 35%;
   }
 }
 
@@ -97,5 +65,83 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Crimson Text", serif;
+    background-color: var(--sepia-bg);
+    color: var(--sepia-dark);
   }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Playfair Display", serif;
+    color: var(--sepia-dark);
+  }
+}
+
+/* Орнаментальные разделители */
+.ornate-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gold);
+}
+
+.ornate-divider::before,
+.ornate-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+/* Рамка в стиле эпохи */
+.imperial-border {
+  border: 2px solid var(--gold);
+  box-shadow:
+    inset 0 0 0 4px var(--sepia-bg),
+    inset 0 0 0 6px var(--gold-light);
+  position: relative;
+}
+
+/* Фон страницы с текстурой */
+.parchment-bg {
+  background-color: var(--sepia-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23f5efe0'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23e8dcc0' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+/* Слайды */
+.slide-transition {
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Декоративные угловые элементы */
+.corner-ornament::before {
+  content: "❧";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  color: var(--gold);
+  font-size: 18px;
+}
+
+.corner-ornament::after {
+  content: "❧";
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  color: var(--gold);
+  font-size: 18px;
+  transform: rotate(180deg);
 }
